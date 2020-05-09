@@ -15,10 +15,17 @@ while(True):
 
     #Tu programa va aqui
 
-
+    if num == 1:
+        #Haz lo del caso 1
+    elif num == 2:
+        #Haz lo del caso 2
+    elif num == 3:
+        #Haz lo del caso 3
 
     #===================
 
-    if num == 4:
+    elif num == 4:
         break
+    else:
+        print("Ingresa una opción válida")
 
