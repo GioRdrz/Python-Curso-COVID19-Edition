@@ -7,6 +7,13 @@ tablero = [
     [0,0,0]
 ]
 
+def ExistePosicionVacia(matriz):
+    for i in range(3):
+        for j in range(3):
+            if matriz[i][j] == 0:
+                return True
+    return False
+
 def JuegoTerminado(matriz):
 
     m = matriz
@@ -43,6 +50,9 @@ def JuegoTerminado(matriz):
         ganador = "O"
     elif m[0][2] == 2 and m[1][1] == 2 and m[2][0] == 2:
         ganador = "O"
+
+    if not ExistePosicionVacia(matriz):
+        ganador = "F" # F de full
 
     return ganador
 
@@ -81,6 +91,7 @@ def MuestraTablero(matriz):
     )
     print(tableroStr)
 
+
 print(" === JUEGO DEL GATO | TIC TAC TOE === ")
 
 while True:
@@ -96,7 +107,12 @@ while True:
         else:
             print("Ingresa posiciones vacias.")
     posibleGanador = JuegoTerminado(tablero)
-    if posibleGanador != '-':
+    if posibleGanador == 'F':
+        MuestraTablero(tablero)
+        print("El juego ha terminado. El tablero está lleno.")
+        break
+    elif posibleGanador != '-':
+        MuestraTablero(tablero)
         print("El juego ha terminado. {} es el ganador!!!".format(posibleGanador))
         break
     MuestraTablero(tablero)
@@ -110,6 +126,11 @@ while True:
         else:
             print("Ingresa posiciones vacias.")
     posibleGanador = JuegoTerminado(tablero)
-    if posibleGanador != '-':
+    if posibleGanador == 'F':
+        MuestraTablero(tablero)
+        print("El juego ha terminado. El tablero está lleno.")
+        break
+    elif posibleGanador != '-':
+        MuestraTablero(tablero)
         print("El juego ha terminado. {} es el ganador!!!".format(posibleGanador))
         break
