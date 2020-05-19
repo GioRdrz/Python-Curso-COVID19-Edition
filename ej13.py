@@ -30,8 +30,10 @@ cuadros = [[0 for j in range(max_j)] for i in range(max_i)]
 def dibujaCuadro(screen,i,j,cuadros):
     if cuadros[i][j] == 0:
         #Aqui si el cuadro no esta activo
+        pygame.draw.rect(screen, (0,0,0), [11*i+1, 11*j+1, 10, 10], 0)
     elif cuadros[i][j] == 1:
         #Aqui si el cuadro esta activo
+        pygame.draw.rect(screen, (255,255,255), [11*i+1, 11*j+1, 10, 10], 0)
 
 #Checar si mouse sobre cuadro
 def mouseSobreCuadro(x,y):
@@ -39,7 +41,8 @@ def mouseSobreCuadro(x,y):
     for i in range(len(cuadros)):
         for j in range(len(cuadros[0])):
             #Aqui validamos si el mouse esta posicionado dentro de algun cuadro
-            
+            if x >= i*11 and x < (i+1)*11 and y >= j*11 and y < (j+1)*11:
+                cuadros[i][j] = 1
 
 #Loop as long as done == False
 while not done:
