@@ -44,12 +44,21 @@ def mouseSobreCuadro(x,y):
             if x >= i*11 and x < (i+1)*11 and y >= j*11 and y < (j+1)*11:
                 cuadros[i][j] = 1
 
+#Codigo para regresar los cuadros a cero
+def resetearCuadros():
+    global cuadros
+    #Aqui va el codigo :v
+
 #Loop as long as done == False
 while not done:
 
     for event in pygame.event.get():  # User did something
         if event.type == pygame.QUIT:  # If user clicked close
             done = True  # Flag that we are done so we exit this loop
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:
+                resetearCuadros()
+
 
     #All drawing code happens after the for loop and but
     #inside the main while not done loop.
